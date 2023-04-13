@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>regist</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+
+	<h3 align="center">신규 사원 등록</h3>
+	
+	<form action="/menu/regist" method="post">
+		<label>신규 사원 이름 : </label><input type="text" name="empName"><br>
+		<label>신규 사원 주민번호 : </label><input type="text" name="empNo"><br>
+		<label>신규 사원 이메일 : </label><input type="text" name="email"><br>
+		<label>신규 사원 핸드폰 번호 : </label><input type="text" name="phone"><br>
+		<label>신규 사원 부서 코드 : </label><input type="text" name="deptCode"><br>
+		<label>신규 사원 직급 : </label>
+		<select name="jobName" id="jobName">
+			<!-- 
+				카테고리 내용이 변화할 수 있다면 조회 해서 처리해야 하며
+				여기에서는 ajax로 처리
+			 -->
+		</select><br>
+		<label>신규 사원 봉급 : </label><input type="number" name="salary"><br>
+		<input type="submit" value="전송">
+	</form>
+	
+	<script>
+	
+		$(function(){
+			$.ajax({
+				url : '/menu/job',
+				success : function(data) {
+					console.log(data);
+					
+					let html = '';
+					
+					for(let index in data) {
+						html += `<option value='${data[index].jobName}'>${data[index].jobName}</option>`;
+					}
+					
+					document.querySelector("#jobName").insertAdjacentHTML('beforeend', html);
+					
+				},
+				error : function(xhr) {
+					console.log(xhr);
+				}
+			});
+		});
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</body>
+</html>

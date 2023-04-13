@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>list</title>
+</head>
+<body>
+
+<table border="1">
+		<tr>
+			<th>사원 아이디</th>
+			<th>사원 이름</th>
+			<th>사원 번호</th>
+			<th>사원 이메일</th>
+			<th>사원 핸드폰 번호</th>
+			<th>사원  부서 코드</th>
+			<th>사원 잡 코드</th>
+			<th>사원 봉급</th>
+		</tr>
+		<tr th:each="emp : ${empList}">
+			<td th:text="${emp.empId}"></td>
+			<td th:text="${emp.empName}"></td>
+			<td th:text="${emp.empNo}"></td>
+			<td th:text="${emp.email}"></td>
+			<td th:text="${emp.phone}"></td>
+			<td th:text="${emp.deptCode}"></td>
+			<td th:text="${emp.jobCode}"></td>
+			<td th:text="${emp.salary}"></td>
+		</tr>
+</table>
+
+</body>
+</html>
